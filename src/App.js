@@ -1,8 +1,10 @@
 import React from "react";
 
 function App() {
+  const name = "Mel";
+  const header = "Hello " + name;
   return (
-  <h1>Hello World!</h1>
+  <h1>{header}</h1>
   )
 }
 
