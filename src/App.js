@@ -1,10 +1,10 @@
 import React from "react";
 
 function App() {
-  const name = "Mel";
+  const sum = (a, b) => (a + b); 
   return (
-  <h1>Hello {name}!</h1>
+  <h2>{sum(10, 23)}</h2>
   )
-}
+} 
 
 export default App;
