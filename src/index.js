@@ -5,6 +5,6 @@ import Welcome from './welcome';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Welcome name={<strong>Kela</strong>} age="91"/>
+    <Welcome name={<strong>John</strong>} age="50"/>
   </React.StrictMode>
 );
