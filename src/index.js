@@ -4,5 +4,5 @@ import { Counter } from './counter';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-     <Counter />
+     <Counter startPoint={4} period={2000} incrementValue={11}/>
 );
