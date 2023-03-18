@@ -15,7 +15,7 @@ constructor(props){
             count: state.count + (incrementValue ?? 1),
             }  
         })
-    }, period)}
+    }, period ?? 1000)}
 
 
     render(){
