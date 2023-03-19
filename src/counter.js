@@ -5,20 +5,20 @@ export class Counter extends React.Component{
     count: this.props.startPoint ?? 0
    }
     
-constructor(props){
-    super(props)
-    const {incrementValue, period} = props
-
-    setInterval(() => {
-        this.setState((state) => {
-            return{
-            count: state.count + (incrementValue ?? 1),
-            }  
-        })
-    }, period ?? 1000)}
-
+buttonClick = () => {
+    this.setState((state) => {
+        return{
+            count: state.count + this.props.incrementValue ?? 1
+        }
+    })
+}
 
     render(){
-        return <div>Counter: {this.state.count}</div>
+        return(
+            <div>
+                <h3>Counter: {this.state.count}</h3>
+                <button onClick={this.buttonClick}>Increment!</button>
+            </div>
+        ) 
     }
 }
