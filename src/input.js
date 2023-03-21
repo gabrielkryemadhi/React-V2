@@ -18,7 +18,16 @@ export class Input extends React.Component{
     }
 
     handleData = () => {
-        this.props.handleData(this.state)
+        this.props.handleData()
+    }
+
+    handleState = () => {
+        this.setState({
+        username: '',
+        password: '',
+        remember: '',
+        button: 'true'
+        })
     }
 
     render() {
@@ -30,6 +39,9 @@ export class Input extends React.Component{
         </form>
         <div>
          <button type='submit' name='button' onClick={this.handleData} disabled={this.state.username === '' || this.state.password === '' ? true : false}><h2>Login</h2></button>
+        </div>
+        <div>
+         <button onClick={this.handleState} ><h2>Reset</h2></button>
         </div>
         </>
     }
