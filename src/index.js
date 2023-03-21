@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import Tracker from './tracker';
+import { Input } from './input';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
      <>
-     <Tracker />
+     <Input />
      </>
 );
