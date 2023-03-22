@@ -1,15 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 
-export class MyList extends React.Component{
+export function MyList({ todos }) {
+  const [items, setItems] = useState(["Props", "Forms", "List"]);
+  const [inputVal, setInputVal] = useState("");
 
-    render(){
-        return(
-            <>
-             <ul>
-              {this.props.tasks.map((task, index) => 
-              (<li key={task + index}>{task}</li>))}
-             </ul>
-            </>
-        )
-    }
+  const handleInput = (e) => {
+    setInputVal(e.target.value);
+  };
+
+  const addToList = () => {
+    setItems([...items, inputVal]);
+  };
+
+  return (
+    <>
+      <ul>
+        {items.map((item) => (
+          <li key={item}>{item}</li>
+        ))}
+      </ul>
+      <input type="text" id="input" value={inputVal} onChange={handleInput} />
+      <button onClick={addToList}>Send</button>
+    </>
+  );
 }
+
+export default MyList;
