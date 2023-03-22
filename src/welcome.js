@@ -1,10 +1,10 @@
 import React from "react";
 import { Age } from "./age";
 
-class Welcome extends React.Component{
+export class Welcome extends React.Component{
     render(){
         return (
-        <div>
+        <div className='welcome'>
         <p>Hello, {this.props.name}!</p>
         {this.props.age > 18 ? <Age age={this.props.age}/> : <p>You are very young!</p>}  
         </div>
