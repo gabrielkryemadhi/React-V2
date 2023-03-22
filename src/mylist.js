@@ -10,6 +10,7 @@ export function MyList({ todos }) {
 
   const addToList = () => {
     setItems([...items, inputVal]);
+    setInputVal("");
   };
 
   return (
