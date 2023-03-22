@@ -13,20 +13,23 @@ export function MyList({ todos }) {
     setInputVal("");
   };
 
-  const deleteItems = () => {
-    setItems([]);
-  }
+  const deleteItems = (i) => {
+    items.splice(i, 1);
+    setItems([...items]);
+  };
 
   return (
     <>
       <ul>
         {items.map((item) => (
-          <li key={item}>{item}</li>
+          <div>
+              <li key={item}>{item}</li>
+              <button onClick={deleteItems}>Reset</button>
+          </div>
         ))}
       </ul>
       <input type="text" id="input" value={inputVal} onChange={handleInput} />
       <button onClick={addToList}>Send</button>
-      <button onClick={deleteItems}>Reset</button>
     </>
   );
 }
