@@ -22,6 +22,7 @@ export class Input extends React.Component{
     }
 
     render() {
+
         return <>
         <form className='login-form'>
          <input name='username' value={this.state.username} onChange={this.handleInput}></input>
@@ -29,7 +30,7 @@ export class Input extends React.Component{
          <input name='remember' type='checkbox' checked={this.state.remember} onChange={this.handleInput}></input>
         </form>
         <div>
-         <button type='submit' name='button' onClick={this.handleData} disabled={this.state.username === '' || this.state.password === '' ? true : false}><h2>Login</h2></button>
+         <button style={{backgroundColor: this.state.password.length < 8 ? 'red' : 'green'}} type='submit' name='button' onClick={this.handleData} disabled={this.state.username === '' || this.state.password === '' ? true : false}><h2>Login</h2></button>
         </div>
         </>
     }
