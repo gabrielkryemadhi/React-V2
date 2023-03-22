@@ -13,6 +13,10 @@ export function MyList({ todos }) {
     setInputVal("");
   };
 
+  const deleteItems = () => {
+    setItems([]);
+  }
+
   return (
     <>
       <ul>
@@ -22,6 +26,7 @@ export function MyList({ todos }) {
       </ul>
       <input type="text" id="input" value={inputVal} onChange={handleInput} />
       <button onClick={addToList}>Send</button>
+      <button onClick={deleteItems}>Reset</button>
     </>
   );
 }
