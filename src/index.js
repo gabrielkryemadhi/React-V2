@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { Input } from './input';
+import { Welcome } from './welcome';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
      <>
-     <Input />
+     <Welcome name='Emi'/>
      </>
 );
