@@ -15,7 +15,10 @@ export function Counter({inicialValue = 0}) {
     useEffect(() => {
         console.log(`The counter is now: ${counter}`
         )}, [counter])
-     //the function should be passed as a prop, need help :)
+    
+    useEffect(() => {
+        console.log("I have rendered");
+    })  
 
     return <>
     <h2>Counter: {counter}</h2>
