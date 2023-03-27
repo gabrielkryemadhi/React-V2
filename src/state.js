@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useState } from "react";
 
 export function Counter({inicialValue = 0}) {
@@ -10,7 +11,12 @@ export function Counter({inicialValue = 0}) {
     function handleCounterReset(){
         setCounter(inicialValue);
     }
-     
+
+    useEffect(() => {
+        console.log(`The counter is now: ${counter}`
+        )}, [counter])
+     //the function should be passed as a prop, need help :)
+
     return <>
     <h2>Counter: {counter}</h2>
     <button onClick={handleCounterIncrement}>Increment</button>
