@@ -1,37 +1,38 @@
 import React, { useState } from "react";
 
-export function MyList({ todos }) {
-  const [items, setItems] = useState(["Props", "Forms", "List"]);
-  const [inputVal, setInputVal] = useState("");
+export function MyList() {
+const [items, setItems] = useState("Papka", "Tomatka");
+const [inputVal, setInputVal] = useState("");
 
-  const handleInput = (e) => {
-    setInputVal(e.target.value);
-  };
+const handleInput = (e) => {
+  setItems(e.target.value);
+};
 
-  const addToList = () => {
-    setItems([...items, inputVal]);
-    setInputVal("");
-  };
+const addToList = () => {
+ setItems([...items, inputVal]);
+ setInputVal('');
+}
 
-  const deleteItems = (i) => {
-    items.splice(i, 1);
-    setItems([...items]);
-  };
+const deleteItem = (i) => {
+setItems(items.filter((item, index) => index !== i))
+};
 
-  return (
-    <>
-      <ul>
-        {items.map((item) => (
-          <div>
-              <li key={item}>{item}</li>
-              <button onClick={deleteItems}>Reset</button>
-          </div>
-        ))}
-      </ul>
-      <input type="text" id="input" value={inputVal} onChange={handleInput} />
-      <button onClick={addToList}>Send</button>
-    </>
-  );
+
+
+return(
+  <>
+  <ul>
+    {items.map((item, index) => (
+      <div>
+        <li key={index}>{item}</li>
+        <button onClick={deleteItem}>Delete</button>
+      </div>
+))}
+  </ul>
+  <input type="text" id="input" value={inputVal} onChange={handleInput} />
+  <button onClick={addToList}>Add</button>
+  </>
+)
 }
 
 export default MyList;
