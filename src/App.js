@@ -1,4 +1,5 @@
 import React from "react";
+import { DisplayLanguage } from "./displayLanguege";
 import { LanguageContext } from "./languageContext";
 import { Counter } from "./state";
 import { Sum } from "./sum";
@@ -19,6 +20,7 @@ export class App extends React.Component {
     return (
       <>
         <div>
+          <DisplayLanguage />
           <select
             name="language"
             value={this.state.language}
