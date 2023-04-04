@@ -1,18 +1,19 @@
 import React from "react";
-import { Input } from "./input";
+import CarDetails from "./welcome";
+
 
 export class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleData = this.handleData.bind(this);
-  }
+  // constructor(props) {
+  //   super(props);
+  //   this.handleData = this.handleData.bind(this);
+  // }
 
-  handleData(username, password, event) {
-    event.preventDefault();
-    console.log(username, password);
-  }
+  // handleData(username, password, event) {
+  //   event.preventDefault();
+  //   console.log(username, password);
+  // }
 
   render() {
-    return <Input handleData={this.handleData} />;
+    return <CarDetails initialData={{model: "Dacia 1300", year: 1969, color: "blue"}} />;
   }
 }
