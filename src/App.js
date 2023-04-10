@@ -1,22 +1,21 @@
-import React, { useState } from "react";
+// import React, { useState } from "react";
 // import { DisplayLanguage } from "./displayLanguege";
-import { LanguageContext } from "./languageContext";
+// import { LanguageContext } from "./languageContext";
 import { Counter } from "./state";
-import { Sum } from "./sum";
-import { Welcome } from "./welcome";
+// import { Sum } from "./sum";
+// import { Welcome } from "./welcome";
 
 export function App(){
 
-  const[language, setLanguage] = useState('en')
+  // const[language, setLanguage] = useState('en')
 
-  function handleLanguageChange(e){
-     setLanguage(e.target.value);
-  }
+  // function handleLanguageChange(e){
+  //    setLanguage(e.target.value);
+  // }
 
     return (
       <>
-        <div>
-          {/* <DisplayLanguage /> */}
+        {/* <div>
           <select
             name="language"
             value={language}
@@ -30,7 +29,8 @@ export function App(){
             <Sum /> 
             <Counter inicialValue={0} />
           </LanguageContext.Provider>
-        </div>
+        </div> */}
+        <Counter />
       </>
     );
   }
