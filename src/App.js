@@ -1,9 +1,20 @@
 // import React, { useState } from "react";
 // import { DisplayLanguage } from "./displayLanguege";
 // import { LanguageContext } from "./languageContext";
+import { FilteredList } from "./filteredList";
 import { Counter } from "./state";
 // import { Sum } from "./sum";
 // import { Welcome } from "./welcome";
+
+const users = [
+  { id: 1, name: "Pax1", age: 62 },
+  { id: 2, name: "Pax2", age: 28 },
+  { id: 3, name: "Pax3", age: 26 },
+  { id: 4, name: "Pax4", age: 11 },
+  { id: 5, name: "Pax5", age: 57 },
+  { id: 6, name: "Pax6", age: 12 },
+  { id: 7, name: "Pax7", age: 50 },
+];
 
 export function App(){
 
@@ -31,6 +42,7 @@ export function App(){
           </LanguageContext.Provider>
         </div> */}
         <Counter />
+        <FilteredList list={users}/>
       </>
     );
   }
