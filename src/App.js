@@ -1,43 +1,38 @@
-import React from "react";
-import { DisplayLanguage } from "./displayLanguege";
+import React, { useState } from "react";
+// import { DisplayLanguage } from "./displayLanguege";
 import { LanguageContext } from "./languageContext";
 import { Counter } from "./state";
 import { Sum } from "./sum";
 import { Welcome } from "./welcome";
 
-export class App extends React.Component {
-  state = {
-    language: "en",
-  };
+export function App(){
 
-  handleLanguageChange = (event) => {
-    this.setState({
-      language: event.target.value,
-    });
-  };
+  const[language, setLanguage] = useState('en')
 
-  render() {
+  function handleLanguageChange(e){
+     setLanguage(e.target.value);
+  }
+
     return (
       <>
         <div>
-          <DisplayLanguage />
+          {/* <DisplayLanguage /> */}
           <select
             name="language"
-            value={this.state.language}
-            onChange={this.handleLanguageChange}
+            value={language}
+            onChange={handleLanguageChange}
           >
             <option value="en">English</option>
             <option value="mon">Mongolian</option>
           </select>
-          <LanguageContext.Provider value="this.state.language">
+          <LanguageContext.Provider value={language}>
             <Welcome />
-            <Sum />
+            <Sum /> 
             <Counter inicialValue={0} />
           </LanguageContext.Provider>
         </div>
       </>
     );
   }
-}
 
 export default App;
