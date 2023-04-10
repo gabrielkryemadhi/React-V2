@@ -1,37 +1,27 @@
 import React, { useEffect, useState } from "react";
 
-export function GithubUser({username}){
-    const [data, setData] = useState(null);
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(null);
+export function GithubUser({ username }) {
+  const [userData, setUserData] = useState(null);
 
-    async function fetchUser(username){
-        setLoading(true);
-        setError(null);
-
-        try{
-        const response = await fetch(`https://api.github.com/users/${username}`);
-        const json = await response.json();
-
-        setData(json);
-    } catch (error) {
-        setError(error)
-        setData(null)
-    } finally {
-        setLoading(false)
+  useEffect(() => {
+    async function fetchUserData() {
+      const response = await fetch(`https://api.github.com/users/${username}`);
+      const data = await response.json();
+      setUserData(data);
     }
-    }
+    fetchUserData();
+  }, [username]);
 
-    useEffect(() => {
-        fetchUser(username)
-    }, [username])
+  if (!userData) {
+    return <div>Loading...</div>;
+  }
 
-    console.log(data)
+  const { login, name, avatar_url } = userData;
 
-    return(
-        <>
-        {data && <h1>{data.name}</h1>}
-        </>
-    )
-
+  return (
+    <div className="github-user">
+      <h2>{name || login}</h2>
+      <img src={avatar_url} alt={`${login}'s avatar`} />
+    </div>
+  );
 }

@@ -1,33 +1,37 @@
 import { useState } from "react";
 import { GithubUser } from "./github";
 
-export function GithubUserList(){
+export function GithubUserList() {
+  const [usernames, setUsernames] = useState([]);
+  const [inputValue, setInputValue] = useState("");
 
-    const [usernames, setUsernames] = useState([])
-    
-    function addUser(e) {
-        e.preventDefault();
-        const input = e.target.elements.username;
-        const newUsername = input.value;
-        if(newUsername){
-            setUsernames([...usernames, newUsername]);
-            input.value = '';
-        }
-    };
-    
-    return(
-        <>
-    <form onSubmit={addUser}>
-        <input type='text' name='username' placeholder="username"></input>
-        <button type="submit">Add user</button>
-    </form>
-    <ul>
-        {usernames.map((user, index) => (
-            <li key={index}>
-                <GithubUser username={user} />
-            </li>
+  function handleAddUser() {
+    if (inputValue.trim() !== "") {
+      setUsernames((prevUsernames) => [...prevUsernames, inputValue.trim()]);
+      setInputValue("");
+    }
+  }
+
+  function handleInputChange(event) {
+    setInputValue(event.target.value);
+  }
+
+  return (
+    <div>
+      <div>
+        <input
+          type="text"
+          value={inputValue}
+          onChange={handleInputChange}
+          placeholder="Enter a Github username"
+        />
+        <button onClick={handleAddUser}>Add User</button>
+      </div>
+      <div>
+        {usernames.map((username) => (
+          <GithubUser key={username} username={username} />
         ))}
-    </ul>
-    </>
-  )
-};
+      </div>
+    </div>
+  );
+}
