@@ -3,6 +3,7 @@ import React from "react";
 // import LoginForm from "./loginForm";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Welcome from "./welcome";
+import Counter from "./state";
 
 // export class App extends React.Component {
 //   constructor(props) {
@@ -25,6 +26,7 @@ export function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Welcome name="Jari" />} />
+        <Route path="/counter" element={<Counter />} />
       </Routes>
     </BrowserRouter>
   );
