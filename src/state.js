@@ -19,3 +19,5 @@ export function Counter({ inicialValue = 0 }) {
     </>
   );
 }
+
+export default Counter;
