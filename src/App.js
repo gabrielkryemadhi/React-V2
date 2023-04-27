@@ -1,6 +1,6 @@
 import React from "react";
 // import { Input } from "./input";
-// import LoginForm from "./loginForm";
+import LoginForm from "./loginForm";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Welcome from "./welcome";
 import Counter from "./state";
@@ -26,6 +26,7 @@ export function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Welcome name="Jari" />} />
+        <Route path="/form" element={<LoginForm />} />
         <Route path="/counter" element={<Counter />} />
       </Routes>
     </BrowserRouter>
