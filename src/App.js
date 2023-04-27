@@ -2,7 +2,7 @@ import React from "react";
 // import { Input } from "./input";
 import LoginForm from "./loginForm";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Welcome from "./welcome";
+import NotFound from "./notFound";
 import Counter from "./state";
 
 // export class App extends React.Component {
@@ -25,9 +25,9 @@ export function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Welcome name="Jari" />} />
         <Route path="/form" element={<LoginForm />} />
         <Route path="/counter" element={<Counter />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );
