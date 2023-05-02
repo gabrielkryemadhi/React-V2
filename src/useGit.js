@@ -1,26 +1,37 @@
-import { useState, useEffect } from "react";
+import { useState} from "react";
 
-const useGithubUser = (username) => {
+const useGit = (username) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-  useEffect(() => {
+  const fectUserData = (username) => {
     if (username) {
       setLoading(true);
       fetch(`https://api.github.com/users/${username}`)
-        .then((response) => response.json())
+        .then((response) => {
+          if (response.status === 403) {
+            setError(new Error("You made too many requests!"));
+          } else if (!response.ok) {
+            setError("Something is up.");
+          }
+          return response.json();
+        })
         .then((data) => {
+          console.log(data);
           setUser(data);
           setLoading(false);
         })
         .catch((error) => {
-          console.error("Error fetching GitHub user:", error);
+          console.error(error);
+          setUser(null);
+          setError(error);
           setLoading(false);
         });
     }
-  }, [username]);
-
-  return { user, loading };
+  };
+  return { user, loading, error, fectUserData };
 };
 
-export default useGithubUser;
+
+export default useGit;
