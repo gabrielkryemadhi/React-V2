@@ -1,9 +1,10 @@
 import React from "react";
 // import { Input } from "./input";
-import LoginForm from "./loginForm";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import NotFound from "./notFound";
-import Counter from "./state";
+// import LoginForm from "./loginForm";
+// import { BrowserRouter, Route, Routes } from "react-router-dom";
+// import NotFound from "./notFound";
+// import Counter from "./state";
+import UserForm from "./loginForm";
 
 // export class App extends React.Component {
 //   constructor(props) {
@@ -23,12 +24,8 @@ import Counter from "./state";
 
 export function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/form" element={<LoginForm />} />
-        <Route path="/counter" element={<Counter />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </BrowserRouter>
+    <>
+      <UserForm />
+    </>
   );
 }

@@ -1,34 +1,15 @@
 import React from "react";
-import useLoginForm from "./useLoginForm";
+import useLogin from "./useLogin";
 
-function LoginForm() {
-  const { values, handleChange } = useLoginForm({ username: "", password: "" });
-
+export default function UserForm() {
+  const { username, password, setUsername, setPassword } = useLogin();
   return (
-    <form>
-      <label>
-        Username:
-        <input
-          type="text"
-          name="username"
-          value={values.username}
-          onChange={handleChange}
-        />
-      </label>
-      <br />
-      <label>
-        Password:
-        <input
-          type="password"
-          name="password"
-          value={values.password}
-          onChange={handleChange}
-        />
-      </label>
-      <br />
-      <button type="submit">Submit</button>
-    </form>
+    <div>
+      <input onChange={setUsername} value={username} />
+      <input onChange={setPassword} value={password} type="password"/>
+      {console.log(
+        `Your username is ${username} and you can use your password which is ${password} to login.`
+      )}
+    </div>
   );
-}
-
-export default LoginForm;
+} 
