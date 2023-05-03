@@ -1,6 +1,6 @@
 import useGithubUser from "./useGithubUser";
 
-export function GithubUser({ username }) {
+export default function GithubUser({ username }) {
   const { userData, isLoading, error } = useGithubUser(username);
 
   if (isLoading) {

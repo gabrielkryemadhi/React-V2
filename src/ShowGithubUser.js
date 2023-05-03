@@ -1,7 +1,5 @@
 import React from "react";
 
-function ShowGithubUser({ user }) {
+export function ShowGithubUser({ user }) {
   return <div>{user}</div>;
 }
-
-export default ShowGithubUser;
