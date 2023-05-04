@@ -1,4 +1,4 @@
-import React from "react";
+
 import useSWR from "swr";
 
 // const useGithubUser = (username) => {
@@ -29,7 +29,7 @@ import useSWR from "swr";
 const fetcher = (url) => fetch(url).then((response) => response.json());
 
 const useGithubUser = (username) => {
-  const { data, mutate } = useSWR(
+  const { data, error, mutate } = useSWR(
     `https://api.github.com/users/${username}`,
     fetcher
   );
@@ -37,6 +37,8 @@ const useGithubUser = (username) => {
   const fetchGithubUser = () => {
     mutate();
   };
+
+  if (username === null) return error;
 
   return {
     user: data,
