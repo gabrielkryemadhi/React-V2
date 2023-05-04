@@ -1,5 +1,9 @@
-import React from "react";
+import { GithubUser } from "./GithubUser";
 
-export function ShowGithubUser({ user }) {
-  return <div>{user}</div>;
-}
+export const ShowGithubUSer = ({ username }) => {
+  return (
+    <div>
+      <GithubUser username={username} />
+    </div>
+  );
+};

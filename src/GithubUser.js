@@ -1,6 +1,7 @@
+import { Link } from "react-router-dom";
 import useGithubUser from "./useGithubUser";
 
-export default function GithubUser({ username }) {
+export function GithubUser({ username }) {
   const { userData, isLoading, error } = useGithubUser(username);
 
   if (isLoading) {
@@ -17,8 +18,13 @@ export default function GithubUser({ username }) {
 
   return (
     <div>
-      <h1>{userData.login}</h1>
-      <img src={userData.avatar_url} alt="Profile" />
+      {userData && (
+        <li>
+          <Link to={`https://www.github.com/${username}`} target={"_blank"}>
+            {userData.login}
+          </Link>
+        </li>
+      )}
     </div>
   );
 }

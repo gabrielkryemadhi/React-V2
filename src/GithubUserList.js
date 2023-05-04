@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
-// import { GithubUser } from "./GithubUser";
-import { Link } from "react-router-dom";
-import { ShowGithubUser } from "./ShowGithubUser";
+import { Link, Outlet } from "react-router-dom";
+import { ShowGithubUSer } from "./ShowGithubUser";
 
 export default function GithubUserList() {
   const [username, setUserName] = useState([]);
@@ -24,14 +23,17 @@ export default function GithubUserList() {
     <div>
       <input type="text" value={input} onChange={handleInput} />
       <button onClick={handleClick}>Send</button>
-      {username.map((user, index) => {
-        return (
-          <Link to={user} key={index}>
-            <br />
-            <ShowGithubUser username={user} />
-          </Link>
-        );
-      })}
+      <ul>
+        {username.map((user, index) => {
+          return (
+            <Link to={user} key={index}>
+              <ShowGithubUSer username={user} />
+            </Link>
+          );
+        })}
+      </ul>
+      <br />
+      <Outlet />
     </div>
   );
 }
