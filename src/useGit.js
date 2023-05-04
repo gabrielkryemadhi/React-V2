@@ -1,34 +1,8 @@
-
 import useSWR from "swr";
-
-// const useGithubUser = (username) => {
-//   const [user, setUser] = useState(null);
-//   const [loading, setLoading] = useState(false);
-
-//   useEffect(() => {
-//     if (username) {
-//       setLoading(true);
-//       fetch(`https://api.github.com/users/${username}`)
-//         .then((response) => response.json())
-//         .then((data) => {
-//           setUser(data);
-//           setLoading(false);
-//         })
-//         .catch((error) => {
-//           console.error("Error fetching GitHub user:", error);
-//           setLoading(false);
-//         });
-//     }
-//   }, [username]);
-
-//   return { user, loading };
-// };
-
-// export default useGithubUser;
 
 const fetcher = (url) => fetch(url).then((response) => response.json());
 
-const useGithubUser = (username) => {
+const useGit = (username) => {
   const { data, error, mutate } = useSWR(
     `https://api.github.com/users/${username}`,
     fetcher
@@ -38,12 +12,18 @@ const useGithubUser = (username) => {
     mutate();
   };
 
-  if (username === null) return error;
+  const refetch = async () => {
+    await mutate(undefined, true);
+  };
+
+  if (!username) return error;
 
   return {
     user: data,
-    loading: !data,
+    error,
+    loading: !data && !error,
+    onFetchuser: fetchGithubUser,
   };
 };
 
-export default useGithubUser;
+export default useGit;

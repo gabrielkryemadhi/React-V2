@@ -1,16 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import useGit from "./useGit";
 
 export default function GitUser({ username }) {
-  const { user, loading } = useGit(username);
+  const { user, error, loading, onFetchuser, refetch } =
+    useGit(username);
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+  useEffect(() => {
+    refetch(username);
+  }, [username]);
 
   if (user) {
     return (
       <div>
+        {loading && <div>Loading...</div>}
+        {error && <div>Error: {error.message}</div>}
         <img src={user.avatar_url} alt={user.id} />
         <h2>{user.login}</h2>
       </div>
