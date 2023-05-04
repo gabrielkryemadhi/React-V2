@@ -2,9 +2,9 @@ import React from "react";
 import useGit from "./useGit";
 
 export default function GitUser({ username }) {
-  const { user, isLoading } = useGit(username);
+  const { user, loading } = useGit(username);
 
-  if (isLoading) {
+  if (loading) {
     return <div>Loading...</div>;
   }
 
